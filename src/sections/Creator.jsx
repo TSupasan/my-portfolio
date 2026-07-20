@@ -1,16 +1,45 @@
-import creatorImage from '../assets/images/creator.png'
+import { useEffect, useState } from 'react'
+import { supabase } from '../lib/supabase'
 
 function Creator() {
+  const [galleryItems, setGalleryItems] = useState([])
+  const [loadingGallery, setLoadingGallery] = useState(true)
+
+  useEffect(() => {
+    fetchCreatorGallery()
+  }, [])
+
+  async function fetchCreatorGallery() {
+    const { data, error } = await supabase
+      .from('gallery')
+      .select('*')
+      .eq('section', 'creator')
+      .order('created_at', {
+        ascending: false
+      })
+
+    if (error) {
+      console.error('FETCH CREATOR GALLERY ERROR:', error)
+    } else {
+      setGalleryItems(data || [])
+    }
+
+    setLoadingGallery(false)
+  }
+
   return (
     <section className="creator-section" id="creator">
+
+      {/* =========================
+          CREATOR HEADING
+      ========================= */}
 
       <div className="creator-heading">
 
         <p>03 / CREATOR</p>
 
         <h2>
-          Ideas become
-          <span> stories.</span>
+          Ideas become <span>stories.</span>
         </h2>
 
         <p>
@@ -21,6 +50,10 @@ function Creator() {
       </div>
 
 
+      {/* =========================
+          CREATOR CONTENT
+      ========================= */}
+
       <div className="creator-content">
 
         {/* MAIN CREATOR CARD */}
@@ -30,12 +63,11 @@ function Creator() {
           <div className="creator-image-wrapper">
 
             <img
-              src={creatorImage}
+              src="/images/creator.png"
               alt="Supasan creating content"
             />
 
           </div>
-
 
           <div className="creator-main-content">
 
@@ -44,8 +76,7 @@ function Creator() {
             </p>
 
             <h3>
-              Creating things
-              <span> worth sharing.</span>
+              Creating things <span>worth sharing.</span>
             </h3>
 
             <p>
@@ -179,59 +210,125 @@ function Creator() {
       </div>
 
 
-      {/* CREATOR GALLERY */}
+      {/* =========================
+          CREATOR GALLERY
+      ========================= */}
 
       <div className="creator-gallery-section">
 
         <div className="creator-gallery-heading">
 
-          <div>
+          <p className="creator-label">
+            SELECTED WORK
+          </p>
 
-            <p className="creator-label">
-              SELECTED WORK
-            </p>
+          {/* MAIN TITLE */}
+          <h3>
+            Visual stories <span>I created.</span>
+          </h3>
 
-            <h3>
-              Creative
-              <span> Gallery.</span>
-            </h3>
-
-          </div>
-
-          <button className="creator-gallery-button">
-            View All Work ↗
-          </button>
+          {/* DESCRIPTION - NEW LINE */}
+          <p className="creator-gallery-description">
+            A collection of creative work, designs, and visual moments.
+          </p>
 
         </div>
 
 
-        <div className="creator-gallery-grid">
+        {/* LOADING */}
 
-          <div className="creator-gallery-item">
+        {loadingGallery && (
 
-            <div className="gallery-placeholder">
-              DESIGN
-            </div>
+          <p className="creator-gallery-status">
+            Loading gallery...
+          </p>
+
+        )}
+
+
+        {/* EMPTY */}
+
+        {!loadingGallery && galleryItems.length === 0 && (
+
+          <p className="creator-gallery-status">
+            No creator gallery items yet.
+          </p>
+
+        )}
+
+
+        {/* GALLERY */}
+
+        {!loadingGallery && galleryItems.length > 0 && (
+
+          <div className="creator-gallery-grid">
+
+            {galleryItems.map((item) => (
+
+              <article
+                className="creator-gallery-card"
+                key={item.id}
+              >
+
+                {item.image_url && (
+
+                  <div className="creator-gallery-image-wrapper">
+
+                    <img
+                      src={item.image_url}
+                      alt={item.title}
+                    />
+
+                  </div>
+
+                )}
+
+
+                <div className="creator-gallery-card-content">
+
+                  <p className="creator-gallery-category">
+                    {item.category}
+                  </p>
+
+                  <h4>
+                    {item.title}
+                  </h4>
+
+                  <p className="creator-gallery-description">
+                    {item.description}
+                  </p>
+
+
+                  {item.link_url && (
+
+                    <a
+                      href={item.link_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="creator-gallery-link"
+                    >
+
+                      {item.link_type === 'youtube'
+                        ? 'Watch Video ↗'
+                        : item.link_type === 'instagram'
+                          ? 'View Post ↗'
+                          : item.link_type === 'github'
+                            ? 'View Project ↗'
+                            : 'Explore ↗'}
+
+                    </a>
+
+                  )}
+
+                </div>
+
+              </article>
+
+            ))}
 
           </div>
 
-          <div className="creator-gallery-item">
-
-            <div className="gallery-placeholder">
-              THUMBNAILS
-            </div>
-
-          </div>
-
-          <div className="creator-gallery-item">
-
-            <div className="gallery-placeholder">
-              FLYERS
-            </div>
-
-          </div>
-
-        </div>
+        )}
 
       </div>
 

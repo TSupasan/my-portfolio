@@ -19,6 +19,9 @@ import Projects from './sections/Projects'
 import AdminLogin from './pages/AdminLogin'
 import Admin from './pages/Admin'
 
+import AdminGallery from './pages/AdminGallery'
+import AdminProjects from './pages/AdminProjects'
+
 
 function App() {
 
@@ -173,6 +176,16 @@ function App() {
           <Route
             path="/admin"
             element={<Admin />}
+          />
+
+          <Route
+            path="/admin/gallery"
+            element={<AdminGallery />}
+          />
+
+          <Route
+            path="/admin/projects"
+            element={<AdminProjects />}
           />
 
 

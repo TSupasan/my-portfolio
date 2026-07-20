@@ -1,226 +1,283 @@
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+
 
 function Admin() {
 
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [category, setCategory] = useState('')
-  const [technologies, setTechnologies] = useState('')
-  const [githubUrl, setGithubUrl] = useState('')
-  const [liveUrl, setLiveUrl] = useState('')
-
-  const [message, setMessage] = useState('')
+  const navigate = useNavigate()
 
 
-  async function handleSubmit(event) {
+  async function handleLogout() {
 
-    event.preventDefault()
+    await supabase.auth.signOut()
 
-    setMessage('Adding project...')
-
-
-    const { error } = await supabase
-      .from('projects')
-      .insert({
-
-        title: title,
-
-        description: description,
-
-        category: category,
-
-        technologies: technologies,
-
-        github_url: githubUrl || null,
-
-        live_url: liveUrl || null,
-
-        featured: false,
-
-      })
-
-
-    if (error) {
-
-      console.error('SUPABASE ERROR:', error)
-
-      setMessage(error.message)
-
-      return
-
-    }
-
-
-    setMessage('Project added successfully!')
-
-
-    setTitle('')
-    setDescription('')
-    setCategory('')
-    setTechnologies('')
-    setGithubUrl('')
-    setLiveUrl('')
+    navigate('/admin-login')
 
   }
 
 
   return (
 
-    <section className="admin-page">
+    <main className="admin-dashboard">
 
 
-      <div className="admin-heading">
+      {/* =========================
+          DASHBOARD HEADER
+      ========================= */}
 
-        <p>ADMIN PANEL</p>
-
-        <h1>
-
-          Manage your
-          <span> projects.</span>
-
-        </h1>
-
-        <p>
-
-          Add and manage projects
-          for your portfolio.
-
-        </p>
-
-      </div>
+      <header className="admin-dashboard-header">
 
 
-      <form
+        <div className="admin-dashboard-heading">
 
-        className="admin-project-form"
+          <p className="admin-label">
 
-        onSubmit={handleSubmit}
+            ADMIN PANEL
 
-      >
-
-
-        <input
-
-          type="text"
-
-          placeholder="Project title"
-
-          value={title}
-
-          onChange={(event) =>
-            setTitle(event.target.value)
-          }
-
-          required
-
-        />
+          </p>
 
 
-        <textarea
+          <h1>
 
-          placeholder="Project description"
+            Manage your
 
-          value={description}
+            <span>
 
-          onChange={(event) =>
-            setDescription(event.target.value)
-          }
+              portfolio.
 
-          required
+            </span>
 
-        />
+          </h1>
 
 
-        <input
+          <p className="admin-dashboard-description">
 
-          type="text"
+            Choose what you want to manage.
 
-          placeholder="Category"
+          </p>
 
-          value={category}
-
-          onChange={(event) =>
-            setCategory(event.target.value)
-          }
-
-          required
-
-        />
+        </div>
 
 
-        <input
+        <button
 
-          type="text"
+          className="admin-logout-button"
 
-          placeholder="Technologies (e.g. React, Node.js, Supabase)"
+          onClick={handleLogout}
 
-          value={technologies}
+        >
 
-          onChange={(event) =>
-            setTechnologies(event.target.value)
-          }
+          Sign Out
 
-          required
+          <span>
 
-        />
+            ↗
 
-
-        <input
-
-          type="url"
-
-          placeholder="GitHub URL (optional)"
-
-          value={githubUrl}
-
-          onChange={(event) =>
-            setGithubUrl(event.target.value)
-          }
-
-        />
-
-
-        <input
-
-          type="url"
-
-          placeholder="Live Demo URL (optional)"
-
-          value={liveUrl}
-
-          onChange={(event) =>
-            setLiveUrl(event.target.value)
-          }
-
-        />
-
-
-        <button type="submit">
-
-          Add Project ↗
+          </span>
 
         </button>
 
 
-        {message && (
-
-          <p>
-
-            {message}
-
-          </p>
-
-        )}
+      </header>
 
 
-      </form>
+      {/* =========================
+          ADMIN OPTIONS
+      ========================= */}
+
+      <section className="admin-dashboard-options">
 
 
-    </section>
+        {/* =========================
+            PROJECT MANAGEMENT
+        ========================= */}
+
+        <button
+
+          type="button"
+
+          className="admin-dashboard-card"
+
+          onClick={() => navigate('/admin/projects')}
+
+        >
+
+
+          <div className="admin-dashboard-card-top">
+
+
+            <span className="admin-dashboard-icon">
+
+              ◈
+
+            </span>
+
+
+            <span className="admin-dashboard-number">
+
+              01
+
+            </span>
+
+
+          </div>
+
+
+          <div className="admin-dashboard-card-content">
+
+
+            <p className="admin-label">
+
+              PORTFOLIO
+
+            </p>
+
+
+            <h2>
+
+              Project
+
+              <span>
+
+                Management
+
+              </span>
+
+            </h2>
+
+
+            <p className="admin-dashboard-card-description">
+
+              Add, edit, and delete the projects displayed
+
+              on your portfolio website.
+
+            </p>
+
+
+          </div>
+
+
+          <div className="admin-dashboard-card-footer">
+
+            <span>
+
+              Manage Projects
+
+            </span>
+
+
+            <strong>
+
+              ↗
+
+            </strong>
+
+          </div>
+
+
+        </button>
+
+
+        {/* =========================
+            GALLERY MANAGEMENT
+        ========================= */}
+
+        <button
+
+          type="button"
+
+          className="admin-dashboard-card"
+
+          onClick={() => navigate('/admin/gallery')}
+
+        >
+
+
+          <div className="admin-dashboard-card-top">
+
+
+            <span className="admin-dashboard-icon">
+
+              ✦
+
+            </span>
+
+
+            <span className="admin-dashboard-number">
+
+              02
+
+            </span>
+
+
+          </div>
+
+
+          <div className="admin-dashboard-card-content">
+
+
+            <p className="admin-label">
+
+              CREATIVE CONTENT
+
+            </p>
+
+
+            <h2>
+
+              Gallery
+
+              <span>
+
+                Management
+
+              </span>
+
+            </h2>
+
+
+            <p className="admin-dashboard-card-description">
+
+              Manage visual content for Creator, Sports,
+
+              IT, and More sections.
+
+            </p>
+
+
+          </div>
+
+
+          <div className="admin-dashboard-card-footer">
+
+            <span>
+
+              Manage Gallery
+
+            </span>
+
+
+            <strong>
+
+              ↗
+
+            </strong>
+
+          </div>
+
+
+        </button>
+
+
+      </section>
+
+
+    </main>
 
   )
 
 }
+
 
 export default Admin
