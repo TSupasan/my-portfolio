@@ -22,6 +22,8 @@ import Admin from './pages/Admin'
 import AdminGallery from './pages/AdminGallery'
 import AdminProjects from './pages/AdminProjects'
 
+import Contact from './pages/Contact'
+
 
 function App() {
 
@@ -186,6 +188,11 @@ function App() {
           <Route
             path="/admin/projects"
             element={<AdminProjects />}
+          />
+
+          <Route
+            path="/contact"
+            element={<Contact />}
           />
 
 

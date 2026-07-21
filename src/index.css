@@ -8147,3 +8147,831 @@ body.light-mode .modal-cancel-button:hover {
   }
 
 }
+
+
+/* =====================================================
+   CONTACT PAGE
+===================================================== */
+
+.contact-page {
+  min-height: 100vh;
+  padding: 155px 8% 70px;
+
+  background: var(--bg-color, #0a0a0d);
+  color: var(--text-color, #ffffff);
+
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   CONTACT HEADER
+===================================================== */
+
+.contact-header {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding-bottom: 75px;
+}
+
+.contact-label,
+.contact-small-label {
+  color: #ff8a3d;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.contact-header h1 {
+  margin-top: 18px;
+
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -6px;
+  font-weight: 700;
+}
+
+.contact-header h1 span {
+  color: #ff8a3d;
+}
+
+.contact-intro {
+  max-width: 500px;
+
+  margin-top: 32px;
+
+  color: #8f8f96;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   CONTACT CONTENT
+===================================================== */
+
+.contact-content {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+
+  gap: 24px;
+  align-items: stretch;
+}
+
+
+/* =====================================================
+   PROFILE CARD
+===================================================== */
+
+.contact-profile-card {
+  min-height: 420px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 42px;
+
+  padding: 38px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 138, 61, 0.08),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  transition: 0.35s ease;
+}
+
+.contact-profile-card:hover {
+  border-color: rgba(255, 138, 61, 0.45);
+
+  transform: translateY(-5px);
+}
+
+
+/* =====================================================
+   PROFILE IMAGE
+===================================================== */
+
+.contact-profile-image-wrapper {
+  flex-shrink: 0;
+
+  width: 245px;
+  height: 245px;
+
+  border-radius: 50%;
+
+  padding: 7px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ff8a3d,
+      rgba(255, 138, 61, 0.1)
+    );
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 138, 61, 0.15);
+}
+
+.contact-profile-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  /*
+    Me value eka adjust karanna puluwan
+    image eka thalila wage penunoth
+  */
+
+  object-position: center 25%;
+}
+
+
+/* =====================================================
+   PROFILE INFORMATION
+===================================================== */
+
+.contact-profile-info {
+  flex: 1;
+}
+
+.contact-profile-info h2 {
+  max-width: 400px;
+
+  margin: 16px 0 18px;
+
+  font-size: clamp(1.8rem, 3vw, 3rem);
+
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+.contact-profile-info > p:last-child {
+  max-width: 430px;
+
+  color: #9999a1;
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   CONTACT DETAILS
+===================================================== */
+
+.contact-details-card {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 22px 0;
+
+  color: inherit;
+  text-decoration: none;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: 0.3s ease;
+}
+
+.contact-detail:first-child {
+  padding-top: 0;
+}
+
+.contact-detail:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.contact-detail:hover {
+  padding-left: 8px;
+}
+
+.contact-detail-icon {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 138, 61, 0.1);
+
+  color: #ff8a3d;
+
+  font-size: 17px;
+
+  transition: 0.3s ease;
+}
+
+.contact-detail:hover .contact-detail-icon {
+  background: #ff8a3d;
+  color: #ffffff;
+
+  transform: scale(1.08);
+}
+
+.contact-detail div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.contact-detail small {
+  color: #77777f;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.contact-detail strong {
+  color: #e7e7eb;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+/* =====================================================
+   SOCIAL SECTION
+===================================================== */
+
+.contact-social-section {
+  max-width: 1200px;
+
+  margin: 95px auto 0;
+
+  padding-top: 35px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-social-links {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 14px;
+
+  margin-top: 24px;
+}
+
+.contact-social-link {
+  min-height: 110px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  transition: 0.35s ease;
+}
+
+.contact-social-link svg {
+  color: #ff8a3d;
+
+  font-size: 24px;
+
+  transition: 0.3s ease;
+}
+
+.contact-social-link span {
+  color: #a4a4aa;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.contact-social-link:hover {
+  border-color: #ff8a3d;
+
+  background: rgba(255, 138, 61, 0.08);
+
+  transform: translateY(-6px);
+}
+
+.contact-social-link:hover svg {
+  transform: scale(1.15);
+
+  color: #ffffff;
+}
+
+.contact-social-link:hover span {
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   FOOTER MESSAGE
+===================================================== */
+
+.contact-footer-message {
+  max-width: 1200px;
+
+  margin: 120px auto 0;
+
+  padding-top: 42px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  text-align: center;
+}
+
+.contact-footer-message p {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+.contact-footer-message span {
+  display: block;
+
+  margin-top: 28px;
+
+  color: #66666d;
+
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   LIGHT MODE
+===================================================== */
+
+.light-mode .contact-page {
+  background: #f5f5f3;
+  color: #171719;
+}
+
+.light-mode .contact-profile-card,
+.light-mode .contact-details-card,
+.light-mode .contact-social-link {
+  border-color: rgba(0, 0, 0, 0.1);
+
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.light-mode .contact-profile-card:hover,
+.light-mode .contact-social-link:hover {
+  border-color: #ff8a3d;
+}
+
+.light-mode .contact-intro,
+.light-mode .contact-profile-info > p:last-child {
+  color: #6f6f76;
+}
+
+.light-mode .contact-detail {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .contact-detail strong {
+  color: #222225;
+}
+
+.light-mode .contact-detail small,
+.light-mode .contact-social-link span {
+  color: #77777d;
+}
+
+.light-mode .contact-social-section,
+.light-mode .contact-footer-message {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .contact-footer-message p {
+  color: #171719;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .contact-page {
+    padding: 130px 5% 60px;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-profile-card {
+    min-height: auto;
+  }
+
+  .contact-social-links {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+
+  .contact-page {
+    padding: 110px 20px 45px;
+  }
+
+  .contact-header {
+    padding-bottom: 50px;
+  }
+
+  .contact-header h1 {
+    font-size: 4.2rem;
+    letter-spacing: -4px;
+  }
+
+  .contact-intro {
+    font-size: 14px;
+  }
+
+  .contact-profile-card {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 28px;
+
+    gap: 30px;
+  }
+
+  .contact-profile-image-wrapper {
+    width: 210px;
+    height: 210px;
+  }
+
+  .contact-profile-info h2 {
+    font-size: 2rem;
+  }
+
+  .contact-details-card {
+    padding: 25px;
+  }
+
+  .contact-detail {
+    gap: 15px;
+  }
+
+  .contact-detail strong {
+    font-size: 13px;
+
+    word-break: break-word;
+  }
+
+  .contact-social-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-social-link {
+    min-height: 105px;
+  }
+
+  .contact-footer-message {
+    margin-top: 90px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+  .contact-social-links {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-header h1 {
+    font-size: 3.5rem;
+  }
+
+}
+
+/* =========================================
+   CONTACT PAGE ANIMATIONS
+========================================= */
+
+.contact-page {
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* =========================================
+   HEADER ENTRANCE
+========================================= */
+
+.contact-header {
+  animation: contactHeaderReveal 0.9s ease both;
+}
+
+@keyframes contactHeaderReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   CONTENT CARDS
+========================================= */
+
+.contact-profile-card {
+  animation: contactCardReveal 0.9s ease 0.15s both;
+}
+
+.contact-details-card {
+  animation: contactCardReveal 0.9s ease 0.3s both;
+}
+
+@keyframes contactCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   PROFILE IMAGE
+========================================= */
+
+.contact-profile-image-wrapper {
+  overflow: hidden;
+}
+
+.contact-profile-image {
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+}
+
+.contact-profile-card:hover
+.contact-profile-image {
+  transform: scale(1.05);
+}
+
+
+/* =========================================
+   CONTACT DETAIL HOVER
+========================================= */
+
+.contact-detail {
+  transition:
+    transform 0.35s ease,
+    padding-left 0.35s ease,
+    background 0.35s ease;
+}
+
+.contact-detail:hover {
+  transform: translateX(8px);
+}
+
+.contact-detail-icon {
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.contact-detail:hover
+.contact-detail-icon {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+
+/* =========================================
+   SOCIAL SECTION ENTRANCE
+========================================= */
+
+.contact-social-section {
+  animation: socialSectionReveal 0.9s ease 0.45s both;
+}
+
+@keyframes socialSectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   SOCIAL LINKS
+   NO COLOR CHANGE ON HOVER
+========================================= */
+
+.contact-social-link {
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* Only movement animation */
+
+.contact-social-link:hover {
+  transform: translateY(-7px);
+}
+
+
+/* Keep icon color unchanged */
+
+.contact-social-link svg {
+  color: inherit;
+  fill: currentColor;
+
+  transition:
+    transform 0.35s ease;
+}
+
+
+/* Icon animation only */
+
+.contact-social-link:hover svg {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+
+/* =========================================
+   LIGHT MODE SOCIAL ICON VISIBILITY
+========================================= */
+
+:not(.dark-mode)
+.contact-social-link svg {
+  color: #111111;
+}
+
+
+/* =========================================
+   DARK MODE SOCIAL ICON VISIBILITY
+========================================= */
+
+.dark-mode
+.contact-social-link svg {
+  color: #ffffff;
+}
+
+
+/* =========================================
+   FOOTER MESSAGE
+========================================= */
+
+.contact-footer-message {
+  animation: footerReveal 1s ease 0.6s both;
+}
+
+@keyframes footerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   SUBTLE CONTACT PAGE LINE
+========================================= */
+
+.contact-header::after {
+  content: '';
+
+  display: block;
+
+  width: 70px;
+
+  height: 2px;
+
+  margin-top: 28px;
+
+  background: currentColor;
+
+  opacity: 0.18;
+
+  transform-origin: left;
+
+  animation:
+    contactLineReveal
+    1s ease
+    0.5s both;
+}
+
+@keyframes contactLineReveal {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+
+  to {
+    width: 70px;
+    opacity: 0.18;
+  }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+}

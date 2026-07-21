@@ -94,6 +94,7 @@ function Navbar({
 
               })
 
+
             }
 
           }}
@@ -139,7 +140,7 @@ function Navbar({
 
         <Link
 
-          to="/#contact"
+          to="/contact"
 
         >
 
@@ -180,6 +181,7 @@ function Navbar({
             : '🌙'
 
         }
+
 
       </button>
 
