@@ -9880,4 +9880,134 @@ body.light-mode .modal-cancel-button:hover {
 
 }
 
+/* =========================================
+   CV DOWNLOAD BUTTON
+   OUTLINE + ROUNDED STYLE
+========================================= */
 
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  padding: 14px 24px;
+
+  border: 1px solid currentColor;
+
+  /* Rounded pill shape */
+  border-radius: 999px;
+
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.cv-button:hover {
+
+  transform: translateY(-4px);
+
+  background: var(--text-color);
+
+  color: var(--background-color);
+
+  border-color: var(--text-color);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =========================================
+   CLICK
+========================================= */
+
+.cv-button:active {
+
+  transform: translateY(-1px);
+
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+.dark-mode .cv-button {
+
+  color: #ffffff;
+
+  border-color: rgba(255, 255, 255, 0.35);
+
+}
+
+
+.dark-mode .cv-button:hover {
+
+  background: #ffffff;
+
+  color: #111111;
+
+  border-color: #ffffff;
+
+}
+
+
+/* =========================================
+   LIGHT MODE
+========================================= */
+
+.light-mode .cv-button {
+
+  color: #111111;
+
+  border-color: rgba(0, 0, 0, 0.3);
+
+}
+
+
+.light-mode .cv-button:hover {
+
+  background: #111111;
+
+  color: #ffffff;
+
+  border-color: #111111;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .cv-button {
+
+    width: 100%;
+
+  }
+
+}

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import profileImage from '../assets/images/profile.png'
 import rugbyImage from '../assets/images/rugby.png'
 import creatorImage from '../assets/images/creator.png'
+import cvFile from '../assets/cv/Tharindu-Supasan-CV.pdf'
 
 
 const personalities = [
@@ -188,6 +189,17 @@ function Hero() {
             Contact Me
 
           </button>
+
+
+          <a
+            href={cvFile}
+            download="Tharindu-Supasan-CV.pdf"
+            className="cv-button"
+          >
+
+            Download CV ↓
+
+          </a>
 
 
         </div>
