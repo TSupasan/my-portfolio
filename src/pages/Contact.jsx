@@ -1,3 +1,7 @@
+import { useState } from 'react'
+
+import emailjs from '@emailjs/browser'
+
 import profileImage from '../assets/images/profile2.png'
 
 import {
@@ -9,11 +13,75 @@ import {
   FaEnvelope,
   FaPhone,
   FaWhatsapp,
-  FaMapMarkerAlt
+  FaMapMarkerAlt,
+  FaCheck
 } from 'react-icons/fa'
 
 
 function Contact() {
+
+  const [isSending, setIsSending] = useState(false)
+
+  const [status, setStatus] = useState('')
+
+
+  const handleSubmit = async (event) => {
+
+    event.preventDefault()
+
+    setIsSending(true)
+
+    setStatus('')
+
+
+    try {
+
+      const result = await emailjs.sendForm(
+
+        'service_bt53yjj',
+
+        'template_bnmf3wc',
+
+        event.target,
+
+        'S6odv_VE4aqlZg_ZW'
+
+      )
+
+
+      console.log('SUCCESS:', result.text)
+
+      setStatus('success')
+
+      event.target.reset()
+
+
+    } catch (error) {
+
+      console.error('EMAILJS FULL ERROR:', error)
+
+      console.error('STATUS:', error.status)
+
+      console.error('TEXT:', error.text)
+
+      setStatus('error')
+
+
+    } finally {
+
+      setIsSending(false)
+
+    }
+
+  }
+
+
+  const handleNewMessage = () => {
+
+    setStatus('')
+
+  }
+
 
   return (
 
@@ -406,6 +474,270 @@ function Contact() {
 
 
       {/* =========================
+          CONTACT FORM
+      ========================= */}
+
+      <div className="contact-form-section">
+
+
+        {status !== 'success' && (
+
+          <>
+
+            <div className="contact-form-heading">
+
+
+              <p className="contact-small-label">
+
+                START A CONVERSATION
+
+              </p>
+
+
+              <h2>
+
+                Let's build
+
+                <span>
+
+                  something.
+
+                </span>
+
+              </h2>
+
+
+              <p>
+
+                Have an idea, opportunity, or project in mind?
+
+                Send me a message and let's talk.
+
+              </p>
+
+
+            </div>
+
+
+            <form
+
+              className="contact-form"
+
+              onSubmit={handleSubmit}
+
+            >
+
+
+              <div className="contact-form-row">
+
+
+                <div className="contact-form-group">
+
+                  <label>
+
+                    YOUR NAME
+
+                  </label>
+
+
+                  <input
+
+                    type="text"
+
+                    name="name"
+
+                    placeholder="Tharindu..."
+
+                    required
+
+                  />
+
+                </div>
+
+
+                <div className="contact-form-group">
+
+                  <label>
+
+                    YOUR EMAIL
+
+                  </label>
+
+
+                  <input
+
+                    type="email"
+
+                    name="email"
+
+                    placeholder="you@example.com"
+
+                    required
+
+                  />
+
+                </div>
+
+
+              </div>
+
+
+              <div className="contact-form-group">
+
+                <label>
+
+                  SUBJECT
+
+                </label>
+
+
+                <input
+
+                  type="text"
+
+                  name="title"
+
+                  placeholder="What would you like to talk about?"
+
+                  required
+
+                />
+
+              </div>
+
+
+              <div className="contact-form-group">
+
+                <label>
+
+                  YOUR MESSAGE
+
+                </label>
+
+
+                <textarea
+
+                  name="message"
+
+                  placeholder="Tell me about your idea..."
+
+                  rows="6"
+
+                  required
+
+                />
+
+              </div>
+
+
+              <button
+
+                type="submit"
+
+                className="contact-form-submit"
+
+                disabled={isSending}
+
+              >
+
+                {isSending
+
+                  ? 'Sending...'
+
+                  : 'Send Message ↗'
+
+                }
+
+              </button>
+
+
+              {status === 'error' && (
+
+                <p className="contact-form-error">
+
+                  Something went wrong. Please try again.
+
+                </p>
+
+              )}
+
+
+            </form>
+
+          </>
+
+        )}
+
+
+        {/* =========================
+            SUCCESS STATE
+        ========================= */}
+
+        {status === 'success' && (
+
+          <div className="contact-success-state">
+
+
+            <div className="contact-success-icon">
+
+              <FaCheck />
+
+            </div>
+
+
+            <p className="contact-small-label">
+
+              MESSAGE SENT SUCCESSFULLY
+
+            </p>
+
+
+            <h2>
+
+              Thanks for
+
+              <span>
+
+                reaching out.
+
+              </span>
+
+            </h2>
+
+
+            <p>
+
+              Your message has been delivered successfully.
+
+              I'll get back to you as soon as possible.
+
+            </p>
+
+
+            <button
+
+              type="button"
+
+              className="contact-new-message-button"
+
+              onClick={handleNewMessage}
+
+            >
+
+              Send Another Message ↗
+
+            </button>
+
+
+          </div>
+
+        )}
+
+
+      </div>
+
+
+      {/* =========================
           FOOTER MESSAGE
       ========================= */}
 
@@ -423,6 +755,7 @@ function Contact() {
           © 2026 Tharindu Supasan Aththanayaka
 
         </span>
+
 
       </div>
 

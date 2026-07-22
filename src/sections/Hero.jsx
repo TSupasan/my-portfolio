@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import profileImage from '../assets/images/profile.png'
 import rugbyImage from '../assets/images/rugby.png'
 import creatorImage from '../assets/images/creator.png'
 
+
 const personalities = [
+
   {
     id: 'tech',
     label: 'IT',
@@ -60,11 +63,20 @@ const personalities = [
     tag: 'CREATE / DISCOVER',
     primaryButton: 'View My World',
   },
+
 ]
 
+
 function Hero() {
-  const [activePersonality, setActivePersonality] =
-    useState('tech')
+
+  const navigate = useNavigate()
+
+
+  const [
+    activePersonality,
+    setActivePersonality
+  ] = useState('tech')
+
 
   const current =
     personalities.find(
@@ -72,52 +84,84 @@ function Hero() {
         personality.id === activePersonality,
     ) || personalities[0]
 
+
   return (
+
     <section
       className={`hero personality-${current.id}`}
       id="home"
     >
+
+
       {/* =========================
           HERO CONTENT
       ========================= */}
 
       <div className="hero-content">
 
+
         <p className="hero-intro">
+
           Hello, I&apos;m
+
         </p>
 
+
         <h1>
+
           Supasan
-          <span>Aththanayaka</span>
+
+          <span>
+
+            Aththanayaka
+
+          </span>
+
         </h1>
+
 
         <div
           className="personality-info"
           key={current.id}
         >
 
+
           <div className="identity-line">
+
             <span className="identity-dot"></span>
 
             <span>
+
               {current.tag}
+
             </span>
+
           </div>
 
+
           <h2>
+
             {current.title}
+
           </h2>
 
+
           <h3>
+
             {current.subtitle}
+
           </h3>
 
+
           <p className="hero-description">
+
             {current.description}
+
           </p>
 
+
         </div>
+
 
         {/* =========================
             ACTION BUTTONS
@@ -125,15 +169,29 @@ function Hero() {
 
         <div className="hero-buttons">
 
-          <button className="primary-button">
+
+          <button
+            className="primary-button"
+            onClick={() => navigate('/projects')}
+          >
+
             {current.primaryButton}
+
           </button>
 
-          <button className="outline-button">
+
+          <button
+            className="outline-button"
+            onClick={() => navigate('/contact')}
+          >
+
             Contact Me
+
           </button>
+
 
         </div>
+
 
         {/* =========================
             PERSONALITY SWITCHER
@@ -141,30 +199,39 @@ function Hero() {
 
         <div className="personality-switcher">
 
+
           {personalities.map(
             (personality) => (
 
               <button
+
                 key={personality.id}
+
                 className={`personality-button ${
                   activePersonality ===
                   personality.id
                     ? 'active'
                     : ''
                 }`}
+
                 onClick={() =>
                   setActivePersonality(
                     personality.id,
                   )
                 }
+
               >
+
                 {personality.label}
+
               </button>
 
             ),
           )}
 
+
         </div>
+
 
       </div>
 
@@ -175,14 +242,20 @@ function Hero() {
 
       <div className="hero-image">
 
+
         <div className="visual-label label-top">
 
           <span>
+
             {current.icon}
+
           </span>
 
+
           <small>
+
             {current.badge}
+
           </small>
 
         </div>
@@ -192,8 +265,11 @@ function Hero() {
 
           <span className="label-line"></span>
 
+
           <small>
+
             {current.tag}
+
           </small>
 
         </div>
@@ -253,15 +329,24 @@ function Hero() {
         {/* PROFILE IMAGE */}
 
         <img
+
           key={current.id}
+
           src={current.image}
+
           alt={`${current.title} - Supasan Aththanayaka`}
+
         />
+
 
       </div>
 
+
     </section>
+
   )
+
 }
+
 
 export default Hero
