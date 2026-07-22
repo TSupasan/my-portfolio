@@ -1,145 +1,212 @@
-# Tharindu Supasan Aththanayaka - Personal Portfolio
+# 🌐 Personal Portfolio — Tharindu Supasan Aththanayaka
 
-A modern and interactive personal portfolio website built to showcase my journey as an IT undergraduate, developer, university rugby player, and creative content creator.
-
-This portfolio combines technology, sports, creativity, and personal experiences in one interactive digital space.
+> A modern, interactive personal portfolio website showcasing my journey as an IT undergraduate, developer, university rugby player, and creative content creator.
 
 ---
 
-## Live Website
+## 👋 About This Project
 
-Coming soon 
+This is my personal portfolio website, designed to represent more than just my technical skills.
 
----
+It brings together my different interests and experiences in one interactive digital space — from technology and software development to university rugby, creative content, design, photography, and personal projects.
 
-## About the Project
-
-This portfolio website was created to represent different aspects of my personal and professional journey.
-
-The website showcases:
-
-- My journey as a BSc. IT undergraduate
-- My experience as a university rugby player
-- My interest in technology and web development
-- My creative content and design interests
-- My personal projects
-- My skills and learning journey
-- My social media presence
-- My downloadable CV
-- A functional contact form
-
-The main goal of this project is to create a modern, interactive, and visually engaging portfolio rather than a traditional static portfolio website.
+The website focuses on a modern, responsive, and interactive user experience while maintaining a clean and professional visual identity.
 
 ---
 
-## Features
+## ✨ Key Features
 
-### Interactive Personality-Based Hero Section
+- 🎨 Modern and responsive portfolio design
+- 🌙 Dark mode and light mode support
+- 🧭 Multi-page navigation with React Router
+- 🧑‍💻 Interactive personality-based hero section
+- 💼 Dynamic projects showcase
+- 📸 Dynamic gallery system
+- 📬 Functional contact form with EmailJS
+- 📄 Downloadable CV
+- 🔗 Social media and professional profile links
+- 🔐 Admin authentication system
+- 🛠️ Admin dashboard for managing content
+- 🖼️ Project and gallery management
+- 📱 Responsive design for desktop, tablet, and mobile devices
+- ⚡ Fast development and optimized production build
 
-The home page allows visitors to explore different sides of my identity:
+---
 
-- IT - Technology and Development
-- Sports - University Rugby Journey
-- Creator - Technology and Creative Content
-- More - Photography, Exploration, and Experiences
+## 🧩 Website Sections
 
-The hero section dynamically changes:
+### 🏠 Home
 
-- Title
-- Subtitle
+The home page introduces different sides of my personality and interests:
+
+- 💻 IT & Technology
+- 🏉 University Rugby
+- 🎥 Creative Content
+- ✨ Personal Exploration
+
+The interactive hero section dynamically changes its content and visual identity based on the selected personality.
+
+---
+
+### 👨‍💻 IT & Technology
+
+A section dedicated to my journey as a BSc. Information Technology undergraduate.
+
+It showcases my technical interests, development journey, programming skills, and personal projects.
+
+---
+
+### 🏉 Sports
+
+A section representing my experience as a university rugby player.
+
+It highlights:
+
+- Teamwork
+- Discipline
+- Leadership
+- Resilience
+- Sports experiences
+
+---
+
+### 🎨 Creator
+
+A section focused on my creative interests, including:
+
+- 🎥 Content creation
+- 🎨 Digital design
+- 🖼️ Poster and thumbnail design
+- 💡 Creative ideas
+- 🧠 Technology and geek culture
+
+---
+
+### 📸 More
+
+A personal section featuring interests such as:
+
+- Photography
+- Exploring new experiences
+- Creativity
+- Personal interests
+- Discovering new ideas
+
+---
+
+### 💼 Projects
+
+A dedicated project showcase section displaying my development work and projects.
+
+Each project can include:
+
+- Project title
 - Description
-- Image
-- Visual symbols
-- Labels
-- Content
+- Technologies used
+- Project image
+- GitHub repository
+- Live project link
 
-based on the selected personality.
-
----
-
-### Dark Mode and Light Mode
-
-The website supports:
-
-- Dark Mode
-- Light Mode
-
-The selected theme is saved using Browser Local Storage, allowing the theme preference to remain after refreshing the page.
+Project data is managed dynamically using Supabase.
 
 ---
 
-### Responsive Design
+### 📬 Contact
 
-The website is designed to work across:
+The contact page allows visitors to get in touch with me through:
 
-- Desktop
-- Laptop
-- Tablet
-- Mobile devices
+- 📧 Email
+- 📱 Phone
+- 💬 WhatsApp
+- 📍 Location
+- 🔗 Social media profiles
+- 📨 Contact form
 
-The layout, buttons, cards, images, and sections adapt to different screen sizes.
-
----
-
-### Modern UI and Animations
-
-The website includes custom CSS animations and interactions such as:
-
-- Page entrance animations
-- Section reveal animations
-- Card hover effects
-- Image hover effects
-- Background glow effects
-- Social link animations
-- Contact detail hover effects
-- Interactive visual rings
-- Floating decorative elements
+The contact form uses EmailJS to deliver messages directly to my email.
 
 ---
 
-### Functional Contact Form
+## 🔐 Admin System
 
-The contact page includes a functional contact form powered by EmailJS.
+The portfolio includes an admin system for managing dynamic content.
 
-Visitors can send:
+### Admin Features
 
-- Name
-- Email
-- Subject
-- Message
+- 🔑 Admin login
+- 🖼️ Gallery management
+- 💼 Project management
+- ➕ Add new projects
+- ✏️ Update project information
+- 🗑️ Delete projects
+- 📸 Upload and manage gallery images
 
-The form includes:
-
-- Sending state
-- Success message
-- Error message
-- Automatic form reset after successful submission
+The admin system is connected with Supabase for authentication, database operations, and storage management.
 
 ---
 
-### Downloadable CV
+## 🛠️ Technologies Used
 
-Visitors can download my latest CV directly from the Hero section.
+### ⚛️ Frontend
 
-The CV is stored inside the project assets and can be downloaded using the Download CV button.
+- React.js
+- JavaScript (ES6+)
+- HTML5
+- CSS3
+- React Router DOM
+- React Icons
+
+### 🗄️ Backend & Cloud Services
+
+- Supabase
+  - PostgreSQL Database
+  - Authentication
+  - Storage
+
+- EmailJS
+  - Contact form email delivery
+  - Email notifications
+
+### ⚡ Development Tools
+
+- Vite
+- Git
+- GitHub
+- Visual Studio Code
+
+### 🚀 Deployment
+
+- Vercel
 
 ---
 
-### Client-Side Navigation
-
-The website uses React Router DOM for navigation between pages.
-
-Current routes include:
+## 🏗️ Project Structure
 
 ```text
-/
-├── /it
-├── /sports
-├── /creator
-├── /more
-├── /projects
-├── /contact
-├── /admin-login
-├── /admin
-├── /admin/gallery
-└── /admin/projects
+src/
+│
+├── assets/
+│   ├── images/
+│   └── cv/
+│
+├── components/
+│   └── Navbar.jsx
+│
+├── pages/
+│   ├── Contact.jsx
+│   ├── AdminLogin.jsx
+│   ├── Admin.jsx
+│   ├── AdminGallery.jsx
+│   └── AdminProjects.jsx
+│
+├── sections/
+│   ├── Hero.jsx
+│   ├── About.jsx
+│   ├── IT.jsx
+│   ├── Sports.jsx
+│   ├── Creator.jsx
+│   ├── More.jsx
+│   └── Projects.jsx
+│
+├── App.jsx
+├── index.css
+└── main.jsx
