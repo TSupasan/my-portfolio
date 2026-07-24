@@ -1,47 +1,40 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import profileImage from '../assets/images/profile.png'
 import { supabase } from '../lib/supabase'
 
 
 function IT() {
 
-  const [galleryItems, setGalleryItems] = useState([])
+  const navigate = useNavigate()
 
+  const [galleryItems, setGalleryItems] = useState([])
   const [loadingGallery, setLoadingGallery] = useState(true)
+  const [activeStat, setActiveStat] = useState(null)
 
 
   useEffect(() => {
-
     fetchITGallery()
-
   }, [])
 
 
   async function fetchITGallery() {
 
     const { data, error } = await supabase
-
       .from('gallery')
-
       .select('*')
-
       .eq('section', 'it')
-
       .order('created_at', {
-
         ascending: false
-
       })
 
 
     if (error) {
 
       console.error(
-
         'FETCH IT GALLERY ERROR:',
-
         error
-
       )
 
     } else {
@@ -56,14 +49,54 @@ function IT() {
   }
 
 
+  const stats = [
+
+    {
+      id: 'degree',
+      icon: '01',
+      title: 'Degree Journey',
+
+      description:
+        'Currently pursuing my Bachelor of Science in Information Technology at the University of Vavuniya.',
+
+      detail:
+        'Building a strong foundation in software development, databases, web technologies, and information technology fundamentals.',
+    },
+
+
+    {
+      id: 'learning',
+      icon: '∞',
+      title: 'Learning Mindset',
+
+      description:
+        'Technology is constantly evolving, so my learning journey never really stops.',
+
+      detail:
+        'Currently exploring new technologies, improving my programming skills, and continuously learning through courses, projects, and practical experience.',
+    },
+
+
+    {
+      id: 'projects',
+      icon: '⌘',
+      title: 'Building Projects',
+
+      description:
+        'Turning knowledge into real-world projects and practical digital experiences.',
+
+      detail:
+        'From personal portfolio projects to web applications and experimental ideas, I enjoy learning by building things that solve real problems.',
+    },
+
+  ]
+
+
   return (
 
     <section
-
       className="it-section"
-
       id="it"
-
     >
 
 
@@ -71,38 +104,24 @@ function IT() {
           IT HEADING
       ========================= */}
 
-      <div
-
-        className="it-heading"
-
-      >
+      <div className="it-heading">
 
         <p>
-
           01 / TECHNOLOGY
-
         </p>
 
 
         <h2>
-
           Building with
-
           <span>
-
             technology.
-
           </span>
-
         </h2>
 
 
         <p>
-
           My journey in IT is about learning, building, and continuously
-
           improving through real-world projects and practical experience.
-
         </p>
 
       </div>
@@ -112,69 +131,38 @@ function IT() {
           MAIN IT CARD
       ========================= */}
 
-      <div
+      <div className="it-main-card">
 
-        className="it-main-card"
-
-      >
-
-        <div
-
-          className="it-image-wrapper"
-
-        >
+        <div className="it-image-wrapper">
 
           <img
-
             src={profileImage}
-
             alt="Supasan Aththanayaka - IT Undergraduate"
-
           />
 
         </div>
 
 
-        <div
+        <div className="it-main-content">
 
-          className="it-main-content"
-
-        >
-
-          <p
-
-            className="it-label"
-
-          >
-
+          <p className="it-label">
             BSC. IT UNDERGRADUATE
-
           </p>
 
 
           <h3>
-
             Turning ideas into
-
             <span>
-
               digital experiences.
-
             </span>
-
           </h3>
 
 
           <p>
-
             I'm currently pursuing my Bachelor of Science in Information
-
             Technology at the University of Vavuniya. I enjoy exploring
-
             web development, programming, and building projects that solve
-
             real-world problems.
-
           </p>
 
         </div>
@@ -186,124 +174,124 @@ function IT() {
           SKILLS
       ========================= */}
 
-      <div
+      <div className="it-skills-card">
 
-        className="it-skills-card"
-
-      >
-
-        <p
-
-          className="it-label"
-
-        >
-
+        <p className="it-label">
           CURRENTLY EXPLORING
-
         </p>
 
 
-        <div
-
-          className="it-skills"
-
-        >
+        <div className="it-skills">
 
           <span>HTML</span>
-
           <span>CSS</span>
-
           <span>JavaScript</span>
-
           <span>React</span>
-
           <span>Python</span>
-
           <span>Node.js</span>
-
           <span>MongoDB</span>
-
           <span>Git & GitHub</span>
 
         </div>
+
+
+        {/* =========================
+            PROJECTS BUTTON
+        ========================= */}
+
+        <button
+          className="it-projects-button"
+          onClick={() => navigate('/projects')}
+        >
+
+          View My Projects ↗
+
+        </button>
 
       </div>
 
 
       {/* =========================
-          STATS
+          INTERACTIVE JOURNEY CARDS
       ========================= */}
 
-      <div
+      <div className="it-bottom">
 
-        className="it-bottom"
+        {stats.map((stat) => (
 
-      >
+          <div
 
-        <div
+            className={`it-stat interactive-stat ${
+              activeStat === stat.id
+                ? 'active'
+                : ''
+            }`}
 
-          className="it-stat"
+            key={stat.id}
 
-        >
+            onMouseEnter={() =>
+              setActiveStat(stat.id)
+            }
 
-          <strong>
+            onMouseLeave={() =>
+              setActiveStat(null)
+            }
 
-            01
+            onClick={() =>
+              setActiveStat(
+                activeStat === stat.id
+                  ? null
+                  : stat.id
+              )
+            }
 
-          </strong>
+          >
 
+            <div className="it-stat-top">
 
-          <span>
-
-            Degree Journey
-
-          </span>
-
-        </div>
-
-
-        <div
-
-          className="it-stat"
-
-        >
-
-          <strong>
-
-            ∞
-
-          </strong>
+              <strong>
+                {stat.icon}
+              </strong>
 
 
-          <span>
+              <span className="it-stat-arrow">
 
-            Learning Mindset
+                {activeStat === stat.id
+                  ? '−'
+                  : '+'}
 
-          </span>
+              </span>
 
-        </div>
-
-
-        <div
-
-          className="it-stat"
-
-        >
-
-          <strong>
-
-            ⌘
-
-          </strong>
+            </div>
 
 
-          <span>
+            <span className="it-stat-title">
+              {stat.title}
+            </span>
 
-            Building Projects
 
-          </span>
+            <div
+              className={`it-stat-details ${
+                activeStat === stat.id
+                  ? 'show'
+                  : ''
+              }`}
+            >
 
-        </div>
+              <p>
+                {stat.description}
+              </p>
+
+
+              <small>
+                {stat.detail}
+              </small>
+
+            </div>
+
+          </div>
+
+        ))}
 
       </div>
 
@@ -312,48 +300,26 @@ function IT() {
           IT GALLERY
       ========================= */}
 
-      <div
+      <div className="it-gallery-section">
 
-        className="it-gallery-section"
+        <div className="it-gallery-heading">
 
-      >
-
-        <div
-
-          className="it-gallery-heading"
-
-        >
-
-          <p
-
-            className="it-label"
-
-          >
-
+          <p className="it-label">
             SELECTED WORK
-
           </p>
 
 
           <h3>
-
             Building things
-
             <span>
-
               that matter.
-
             </span>
-
           </h3>
 
 
           <p>
-
             A collection of projects, experiments, and technical work
-
             created while learning and building with technology.
-
           </p>
 
         </div>
@@ -361,196 +327,103 @@ function IT() {
 
         {/* LOADING */}
 
-        {
+        {loadingGallery && (
 
-          loadingGallery && (
+          <p className="it-gallery-status">
+            Loading gallery...
+          </p>
 
-            <p
-
-              className="it-gallery-status"
-
-            >
-
-              Loading gallery...
-
-            </p>
-
-          )
-
-        }
+        )}
 
 
         {/* EMPTY */}
 
-        {
-
-          !loadingGallery &&
-
+        {!loadingGallery &&
           galleryItems.length === 0 && (
 
-            <p
-
-              className="it-gallery-status"
-
-            >
-
+            <p className="it-gallery-status">
               No IT gallery items yet.
-
             </p>
 
-          )
-
-        }
+        )}
 
 
         {/* GALLERY */}
 
-        {
-
-          !loadingGallery &&
-
+        {!loadingGallery &&
           galleryItems.length > 0 && (
 
-            <div
+            <div className="it-gallery-grid">
 
-              className="it-gallery-grid"
+              {galleryItems.map((item) => (
 
-            >
-
-              {
-
-                galleryItems.map(
-
-                  (item) => (
-
-                    <article
-
-                      className="it-gallery-card"
-
-                      key={item.id}
-
-                    >
+                <article
+                  className="it-gallery-card"
+                  key={item.id}
+                >
 
 
-                      {/* IMAGE */}
+                  {item.image_url && (
 
-                      {
+                    <div className="it-gallery-image-wrapper">
 
-                        item.image_url && (
+                      <img
+                        src={item.image_url}
+                        alt={item.title}
+                      />
 
-                          <div
+                    </div>
 
-                            className="it-gallery-image-wrapper"
-
-                          >
-
-                            <img
-
-                              src={item.image_url}
-
-                              alt={item.title}
-
-                            />
-
-                          </div>
-
-                        )
-
-                      }
+                  )}
 
 
-                      {/* CONTENT */}
+                  <div className="it-gallery-card-content">
 
-                      <div
+                    <p className="it-gallery-category">
+                      {item.category}
+                    </p>
 
-                        className="it-gallery-card-content"
 
+                    <h4>
+                      {item.title}
+                    </h4>
+
+
+                    <p className="it-gallery-description">
+                      {item.description}
+                    </p>
+
+
+                    {item.link_url && (
+
+                      <a
+                        href={item.link_url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="it-gallery-link"
                       >
 
-                        <p
+                        {item.link_type === 'github'
+                          ? 'View Project ↗'
+                          : item.link_type === 'youtube'
+                            ? 'Watch Video ↗'
+                            : item.link_type === 'instagram'
+                              ? 'View Post ↗'
+                              : 'Explore ↗'}
 
-                          className="it-gallery-category"
+                      </a>
 
-                        >
+                    )}
 
-                          {item.category}
+                  </div>
 
-                        </p>
+                </article>
 
-
-                        <h4>
-
-                          {item.title}
-
-                        </h4>
-
-
-                        <p
-
-                          className="it-gallery-description"
-
-                        >
-
-                          {item.description}
-
-                        </p>
-
-
-                        {
-
-                          item.link_url && (
-
-                            <a
-
-                              href={item.link_url}
-
-                              target="_blank"
-
-                              rel="noreferrer"
-
-                              className="it-gallery-link"
-
-                            >
-
-                              {
-
-                                item.link_type === 'github'
-
-                                  ? 'View Project ↗'
-
-                                  : item.link_type === 'youtube'
-
-                                    ? 'Watch Video ↗'
-
-                                    : item.link_type === 'instagram'
-
-                                      ? 'View Post ↗'
-
-                                      : 'Explore ↗'
-
-                              }
-
-                            </a>
-
-                          )
-
-                        }
-
-                      </div>
-
-                    </article>
-
-                  )
-
-                )
-
-              }
+              ))}
 
             </div>
 
-          )
-
-        }
+        )}
 
       </div>
 

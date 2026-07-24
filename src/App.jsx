@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  useLocation
 } from 'react-router-dom'
 
 import './index.css'
@@ -16,6 +17,7 @@ import Sports from './sections/Sports'
 import Creator from './sections/Creator'
 import More from './sections/More'
 import Projects from './sections/Projects'
+
 import AdminLogin from './pages/AdminLogin'
 import Admin from './pages/Admin'
 
@@ -25,12 +27,49 @@ import AdminProjects from './pages/AdminProjects'
 import Contact from './pages/Contact'
 
 
+/* =========================================
+   SCROLL TO TOP ON PAGE CHANGE
+========================================= */
+
+function ScrollToTop() {
+
+  const { pathname } = useLocation()
+
+
+  useEffect(() => {
+
+    window.scrollTo({
+
+      top: 0,
+
+      left: 0,
+
+      behavior: 'instant',
+
+    })
+
+  }, [pathname])
+
+
+  return null
+
+}
+
+
+/* =========================================
+   MAIN APP
+========================================= */
+
 function App() {
+
 
   const [darkMode, setDarkMode] = useState(() => {
 
+
     const savedTheme =
+
       localStorage.getItem('theme')
+
 
     if (savedTheme) {
 
@@ -38,16 +77,25 @@ function App() {
 
     }
 
+
     return true
 
   })
 
 
+  /* =========================================
+     THEME MANAGEMENT
+  ========================================= */
+
   useEffect(() => {
 
+
     document.body.className =
+
       darkMode
+
         ? 'dark-mode'
+
         : 'light-mode'
 
 
@@ -56,19 +104,34 @@ function App() {
       'theme',
 
       darkMode
+
         ? 'dark'
+
         : 'light'
 
     )
+
 
   }, [darkMode])
 
 
   return (
 
+
     <BrowserRouter>
 
+
+      {/* SCROLL TO TOP */}
+
+      <ScrollToTop />
+
+
       <div className="app">
+
+
+        {/* =========================
+            NAVBAR
+        ========================= */}
 
 
         <Navbar
@@ -80,12 +143,18 @@ function App() {
         />
 
 
+        {/* =========================
+            ROUTES
+        ========================= */}
+
+
         <Routes>
 
 
           {/* =========================
               HOME PAGE
           ========================= */}
+
 
           <Route
 
@@ -95,9 +164,12 @@ function App() {
 
               <>
 
+
                 <Hero />
 
+
                 <About />
+
 
               </>
 
@@ -109,6 +181,7 @@ function App() {
           {/* =========================
               IT PAGE
           ========================= */}
+
 
           <Route
 
@@ -123,6 +196,7 @@ function App() {
               SPORTS PAGE
           ========================= */}
 
+
           <Route
 
             path="/sports"
@@ -135,6 +209,7 @@ function App() {
           {/* =========================
               CREATOR PAGE
           ========================= */}
+
 
           <Route
 
@@ -149,6 +224,7 @@ function App() {
               MORE PAGE
           ========================= */}
 
+
           <Route
 
             path="/more"
@@ -162,6 +238,7 @@ function App() {
               PROJECTS PAGE
           ========================= */}
 
+
           <Route
 
             path="/projects"
@@ -170,29 +247,74 @@ function App() {
 
           />
 
+
+          {/* =========================
+              ADMIN LOGIN
+          ========================= */}
+
+
           <Route
+
             path="/admin-login"
+
             element={<AdminLogin />}
+
           />
 
+
+          {/* =========================
+              ADMIN DASHBOARD
+          ========================= */}
+
+
           <Route
+
             path="/admin"
+
             element={<Admin />}
+
           />
 
+
+          {/* =========================
+              ADMIN GALLERY
+          ========================= */}
+
+
           <Route
+
             path="/admin/gallery"
+
             element={<AdminGallery />}
+
           />
 
+
+          {/* =========================
+              ADMIN PROJECTS
+          ========================= */}
+
+
           <Route
+
             path="/admin/projects"
+
             element={<AdminProjects />}
+
           />
 
+
+          {/* =========================
+              CONTACT PAGE
+          ========================= */}
+
+
           <Route
+
             path="/contact"
+
             element={<Contact />}
+
           />
 
 
@@ -200,6 +322,7 @@ function App() {
 
 
       </div>
+
 
     </BrowserRouter>
 

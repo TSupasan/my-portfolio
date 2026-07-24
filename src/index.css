@@ -10011,3 +10011,555 @@ body.light-mode .modal-cancel-button:hover {
   }
 
 }
+
+
+/* =========================================
+   INTERACTIVE IT JOURNEY CARDS
+========================================= */
+
+.interactive-stat {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.interactive-stat:hover {
+  transform: translateY(-6px);
+}
+
+.it-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.it-stat-arrow {
+  font-size: 1.4rem;
+  opacity: 0.6;
+}
+
+.it-stat-title {
+  display: block;
+  margin-top: 8px;
+}
+
+.it-stat-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease,
+    margin-top 0.3s ease;
+}
+
+.it-stat-details.show {
+  max-height: 180px;
+  opacity: 1;
+  margin-top: 18px;
+}
+
+.it-stat-details p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.it-stat-details small {
+  display: block;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+/* =========================================
+   FUTURISTIC IT STAT CARDS
+========================================= */
+
+.interactive-stat {
+
+  position: relative;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.015)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 18px;
+
+  backdrop-filter: blur(14px);
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+
+}
+
+
+/* =========================================
+   ORANGE NEON LIGHT LINE
+========================================= */
+
+.interactive-stat::before {
+
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+
+  left: -100%;
+
+  width: 100%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #ff8c42,
+      transparent
+    );
+
+  transition: left 0.6s ease;
+
+}
+
+
+/* =========================================
+   SOFT ORANGE NEON GLOW
+========================================= */
+
+.interactive-stat::after {
+
+  content: '';
+
+  position: absolute;
+
+  width: 140px;
+
+  height: 140px;
+
+  top: -70px;
+
+  right: -70px;
+
+  background: #ff8c42;
+
+  opacity: 0.08;
+
+  filter: blur(45px);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.interactive-stat:hover {
+
+  transform: translateY(-8px);
+
+  border-color: rgba(255, 140, 66, 0.65);
+
+  box-shadow:
+
+    0 0 0 1px rgba(255, 140, 66, 0.10),
+
+    0 15px 40px rgba(255, 140, 66, 0.16);
+
+}
+
+
+.interactive-stat:hover::before {
+
+  left: 100%;
+
+}
+
+
+/* =========================================
+   EXPANDED STATE
+========================================= */
+
+.interactive-stat.active {
+
+  transform: translateY(-8px);
+
+  height: auto;
+
+  min-height: 240px;
+
+  border-color: #ff8c42;
+
+  box-shadow:
+
+    0 0 0 1px rgba(255, 140, 66, 0.20),
+
+    0 0 35px rgba(255, 140, 66, 0.20);
+
+}
+
+
+/* =========================================
+   STAT NUMBER
+========================================= */
+
+.interactive-stat strong {
+
+  color: #ff8c42;
+
+  text-shadow:
+
+    0 0 10px rgba(255, 140, 66, 0.65);
+
+}
+
+
+/* =========================================
+   STAT ARROW
+========================================= */
+
+.interactive-stat .it-stat-arrow {
+
+  color: #ff8c42;
+
+  transition:
+
+    transform 0.3s ease,
+
+    color 0.3s ease;
+
+}
+
+
+/* =========================================
+   DETAILS
+========================================= */
+
+.it-stat-details {
+
+  max-height: 0;
+
+  opacity: 0;
+
+  overflow: hidden;
+
+  transform: translateY(8px);
+
+  transition:
+
+    max-height 0.55s ease,
+
+    opacity 0.35s ease,
+
+    transform 0.35s ease;
+
+}
+
+
+/* =========================================
+   SHOW FULL CONTENT
+========================================= */
+
+.it-stat-details.show {
+
+  max-height: 500px;
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+
+
+/* =========================================
+   DETAIL TEXT
+========================================= */
+
+.it-stat-details p {
+
+  margin-bottom: 12px;
+
+  line-height: 1.7;
+
+}
+
+
+.it-stat-details small {
+
+  display: block;
+
+  line-height: 1.7;
+
+}
+
+
+/* =========================================
+   ORANGE DETAIL LINE
+========================================= */
+
+.it-stat-details::before {
+
+  content: '';
+
+  display: block;
+
+  width: 35px;
+
+  height: 2px;
+
+  margin: 12px 0;
+
+  background: #ff8c42;
+
+  box-shadow:
+
+    0 0 10px rgba(255, 140, 66, 0.65);
+
+}
+
+
+/* =========================================
+   REMOVE DEFAULT MARKER
+========================================= */
+
+.interactive-stat::marker {
+
+  display: none;
+
+}
+
+/* =========================================
+   GLASSY 3D LIQUID PROJECTS BUTTON
+========================================= */
+
+.it-projects-button {
+
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-top: 24px;
+
+  padding: 15px 28px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 170, 110, 0.65);
+
+  border-radius: 999px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 140, 60, 0.18),
+      rgba(255, 255, 255, 0.06)
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+
+  opacity: 1;
+
+  visibility: visible;
+
+  isolation: isolate;
+
+  z-index: 1;
+
+  backdrop-filter: blur(14px);
+
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+
+    inset 0 1px 1px rgba(255, 255, 255, 0.45),
+
+    inset 0 -6px 14px rgba(255, 120, 40, 0.12),
+
+    0 8px 18px rgba(0, 0, 0, 0.18),
+
+    0 0 20px rgba(255, 140, 60, 0.12);
+
+  transition:
+
+    transform 0.35s ease,
+
+    border-color 0.35s ease,
+
+    box-shadow 0.35s ease;
+
+}
+
+
+/* =========================================
+   TRANSPARENT GLASS HIGHLIGHT
+========================================= */
+
+.it-projects-button::before {
+
+  content: '';
+
+  position: absolute;
+
+  top: 2px;
+
+  left: 12%;
+
+  width: 76%;
+
+  height: 45%;
+
+  border-radius: 999px;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0)
+    );
+
+  opacity: 0.45;
+
+  filter: blur(3px);
+
+  pointer-events: none;
+
+  z-index: -1;
+
+}
+
+
+/* =========================================
+   ORANGE LIQUID / 3D GLOW
+========================================= */
+
+.it-projects-button::after {
+
+  content: '';
+
+  position: absolute;
+
+  width: 130px;
+
+  height: 70px;
+
+  right: -25px;
+
+  bottom: -40px;
+
+  border-radius: 50%;
+
+  background:
+
+    radial-gradient(
+      ellipse,
+      rgba(255, 140, 60, 0.55),
+      rgba(255, 100, 30, 0.15),
+      transparent 70%
+    );
+
+  filter: blur(14px);
+
+  opacity: 0.8;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  transition:
+
+    transform 0.6s ease,
+
+    opacity 0.4s ease;
+
+}
+
+
+/* =========================================
+   HOVER - GLASS 3D LIFT
+========================================= */
+
+.it-projects-button:hover {
+
+  transform: translateY(-5px) scale(1.03);
+
+  border-color: rgba(255, 190, 140, 0.95);
+
+  box-shadow:
+
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+
+    inset 0 -8px 18px rgba(255, 120, 40, 0.18),
+
+    0 14px 30px rgba(0, 0, 0, 0.25),
+
+    0 0 30px rgba(255, 140, 60, 0.28);
+
+}
+
+
+.it-projects-button:hover::after {
+
+  transform: translate(-45px, -20px) scale(1.4);
+
+  opacity: 1;
+
+}
+
+
+/* =========================================
+   CLICK
+========================================= */
+
+.it-projects-button:active {
+
+  transform: translateY(-1px) scale(0.98);
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .it-projects-button {
+
+    width: 100%;
+
+  }
+
+}
