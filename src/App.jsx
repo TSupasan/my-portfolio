@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import {
   BrowserRouter,
   Routes,
@@ -6,9 +7,12 @@ import {
   useLocation
 } from 'react-router-dom'
 
+
 import './index.css'
 
+
 import Navbar from './components/Navbar'
+
 
 import Hero from './sections/Hero'
 import About from './sections/About'
@@ -17,6 +21,7 @@ import Sports from './sections/Sports'
 import Creator from './sections/Creator'
 import More from './sections/More'
 import Projects from './sections/Projects'
+
 
 import AdminLogin from './pages/AdminLogin'
 import Admin from './pages/Admin'
@@ -38,15 +43,7 @@ function ScrollToTop() {
 
   useEffect(() => {
 
-    window.scrollTo({
-
-      top: 0,
-
-      left: 0,
-
-      behavior: 'instant',
-
-    })
+    window.scrollTo(0, 0)
 
   }, [pathname])
 
@@ -62,6 +59,10 @@ function ScrollToTop() {
 
 function App() {
 
+
+  /* =========================================
+     THEME STATE
+  ========================================= */
 
   const [darkMode, setDarkMode] = useState(() => {
 
@@ -121,7 +122,10 @@ function App() {
     <BrowserRouter>
 
 
-      {/* SCROLL TO TOP */}
+      {/* =========================
+          GLOBAL SCROLL TO TOP
+      ========================= */}
+
 
       <ScrollToTop />
 
